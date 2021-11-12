@@ -1,7 +1,7 @@
 'use strict';
 
-import {IndexedDBStorage} from 'indexeddb-storage.js';
-import * as visualize from 'visualize.js';
+import {IndexedDBStorage} from './indexeddb-storage.js';
+import * as visualize from './visualize.js';
 
 const DELETE_BUTTON_SELECTOR = '.delete-button';
 
