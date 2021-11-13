@@ -48,42 +48,7 @@
       </div>
     </header>
     <main class="mdc-top-app-bar--fixed-adjust">
-      <section class="sound-clips">
-        <div class="empty">
-          <i class="material-icons">mic_external_on</i>
-          <p>
-            Press the button to record audio.<br />No data will be uploaded.
-          </p>
-        </div>
-
-        <template id="clip-template">
-          <div class="mdc-card clip clip-recording">
-            <div class="my-card__media mdc-card__media">
-              <canvas class="visualizer" height="60px"></canvas>
-            </div>
-            <div class="mdc-card__actions recording-invisible">
-              <audio controls></audio>
-              <button class="mdc-icon-button material-icons delete-button">
-                delete
-              </button>
-            </div>
-          </div>
-        </template>
-      </section>
-
-      <div id="record-outline">
-        <button class="mdc-fab" id="record">
-          <i
-            class="material-icons mdc-icon-button__icon mdc-icon-button__icon--on"
-            >stop</i
-          >
-          <i class="material-icons mdc-icon-button__icon"
-            >fiber_manual_record</i
-          >
-        </button>
-      </div>
-      
-      <div id="boombox">
+	          <div id="boombox">
 	<div class="boombox-handle"></div>
 
 	<div class="boombox-body">
@@ -121,6 +86,42 @@
 
 	</div><!-- boombox-body -->
 </div>
+      <section class="sound-clips">
+        <div class="empty">
+          <i class="material-icons">mic_external_on</i>
+          <p>
+            Press the button to record audio.<br />No data will be uploaded.
+          </p>
+        </div>
+
+        <template id="clip-template">
+          <div class="mdc-card clip clip-recording">
+            <div class="my-card__media mdc-card__media">
+              <canvas class="visualizer" height="60px"></canvas>
+            </div>
+            <div class="mdc-card__actions recording-invisible">
+              <audio controls></audio>
+              <button class="mdc-icon-button material-icons delete-button">
+                delete
+              </button>
+            </div>
+          </div>
+        </template>
+      </section>
+
+      <div id="record-outline">
+        <button class="mdc-fab" id="record">
+          <i
+            class="material-icons mdc-icon-button__icon mdc-icon-button__icon--on"
+            >stop</i
+          >
+          <i class="material-icons mdc-icon-button__icon"
+            >fiber_manual_record</i
+          >
+        </button>
+      </div>
+      
+
       </main>
 
 <script type="text/javascript">
