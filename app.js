@@ -60,7 +60,7 @@ function finalizeClip({clipContainer, blob, id, storage}) {
     storage.delete(parseInt(id));
   };
   clipContainer.querySelector('audio').src = URL.createObjectURL(blob);
-  clipContainer.addEventListener('click', alert('Hello'));
+  clipContainer.addEventListener('click', alerter);
   clipContainer.classList.remove('clip-recording');
 }
 
@@ -152,4 +152,8 @@ function visualizeRecording({stream, outlineIndicator, waveformIndicator}) {
   }
 
   draw();
+}
+
+function alerter() {
+alert('Hello');
 }
