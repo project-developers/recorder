@@ -60,6 +60,7 @@ function finalizeClip({clipContainer, blob, id, storage}) {
     storage.delete(parseInt(id));
   };
   clipContainer.querySelector('audio').src = URL.createObjectURL(blob);
+  clipContainer.onclick(alert('Hello'));
   clipContainer.classList.remove('clip-recording');
 }
 
