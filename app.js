@@ -102,6 +102,7 @@ async function startRecording({storage}) {
   console.log(mediaRecorder);
   /*mediaRecorder.ondataavailable = ({data}) => {
     chunks.push(data);
+    console.log(chunks);
   };*/
   mediaRecorder.ondataavailable = function(e) {
     chunks.push(e.data);
@@ -110,6 +111,8 @@ async function startRecording({storage}) {
     outlineIndicator.hide();
     recordButton.onclick = () => startRecording({storage});
     const blob = chunks[0];//new Blob(chunks);//, {type: 'audio/wav'});//mediaRecorder.mimeType});
+    console.log(chunks);
+    console.log(chunks[0]);
     const id = await storage.save(blob);
     finalizeClip({clipContainer, id, blob, storage});
   };
