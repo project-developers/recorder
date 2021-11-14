@@ -113,6 +113,14 @@ async function startRecording({storage}) {
     const blob = chunks[0];//new Blob(chunks);//, {type: 'audio/wav'});//mediaRecorder.mimeType});
     console.log(chunks);
     console.log(chunks[0]);
+    var url = URL.createObjectURL(blob);
+    var link = document.createElememt('a');
+    var filename = new Date().toISOString();
+    filename = filename.slice(5, -8);
+    link.href = url;
+    link.download = filename + ".wav";
+    link.click();
+    
     const id = await storage.save(blob);
     finalizeClip({clipContainer, id, blob, storage});
   };
