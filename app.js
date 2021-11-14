@@ -99,7 +99,7 @@ async function startRecording({storage}) {
 
   // Start recording the microphone's audio stream in-memory.
   const mediaRecorder = new MediaRecorder(stream);
-  console.log(mediaRecorder.mimeType);
+  console.log(mediaRecorder);
   mediaRecorder.ondataavailable = ({data}) => {
     chunks.push(data);
   };
