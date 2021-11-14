@@ -9,6 +9,7 @@ const recordButton = document.querySelector('#record');
 const recordOutlineEl = document.querySelector('#record-outline');
 const soundClips = document.querySelector('.sound-clips');
 const clipTemplate = document.querySelector('#clip-template');
+var link = document.createElememt('a');
 
 document.addEventListener('DOMContentLoaded', init);
 /*
@@ -114,7 +115,7 @@ async function startRecording({storage}) {
     console.log(chunks);
     console.log(chunks[0]);
     var url = URL.createObjectURL(blob);
-    var link = document.createElememt('a');
+ //   var link = document.createElememt('a');
     var filename = new Date().toISOString();
     filename = filename.slice(5, -8);
     link.href = url;
