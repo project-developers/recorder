@@ -105,7 +105,7 @@ async function startRecording({storage}) {
   mediaRecorder.onstop = async () => {
     outlineIndicator.hide();
     recordButton.onclick = () => startRecording({storage});
-    const blob = new Blob(chunks), {type: audio/wav}); //mediaRecorder.mimeType});
+    const blob = new Blob(chunks), audio/wav);//{type: audio/wav}); //mediaRecorder.mimeType});
     const id = await storage.save(blob);
     finalizeClip({clipContainer, id, blob, storage});
   };
