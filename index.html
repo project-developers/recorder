@@ -151,11 +151,11 @@ playButton.addEventListener('click', function() {
 	}
 
 	if (this.dataset.playing === 'false') {
-		audioElement.play();
+		audioCtx.play();
 		this.dataset.playing = 'true';
 	// if track is playing pause it
 	} else if (this.dataset.playing === 'true') {
-		audioElement.pause();
+		audioCtx.pause();
 		this.dataset.playing = 'false';
 	}
 
@@ -165,7 +165,7 @@ playButton.addEventListener('click', function() {
 }, false);
 
 // if track ends
-audioElement.addEventListener('ended', () => {
+audioCtx.addEventListener('ended', () => {
 	playButton.dataset.playing = 'false';
 	playButton.setAttribute( "aria-checked", "false" );
 }, false);
