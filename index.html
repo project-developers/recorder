@@ -165,7 +165,7 @@ playButton.addEventListener('click', function() {
 }, false);
 
 // if track ends
-audioCtx.addEventListener('ended', () => {
+audioElement.addEventListener('ended', () => {
 	playButton.dataset.playing = 'false';
 	playButton.setAttribute( "aria-checked", "false" );
 }, false);
