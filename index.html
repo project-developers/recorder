@@ -131,7 +131,7 @@
 
 // for cross browser
 const AudioContext = window.AudioContext || window.webkitAudioContext;
-var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
 //let audioCtx;
 
 var source;
@@ -140,6 +140,7 @@ var source;
     // decodeAudioData to decode it and stick it in a buffer.
     // Then we put the buffer into the source
     function getData() {
+	    var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
       source = audioCtx.createBufferSource();
 
       return fetch('outfoxing.mp3')
@@ -173,17 +174,17 @@ playButton.addEventListener('click', function() {
 		audioCtx.resume();
 	}
 
-	if (this.dataset.playing === 'false') {
+	//if (this.dataset.playing === 'false') {
 		source.start(0);
-		this.dataset.playing = 'true';
+		//this.dataset.playing = 'true';
 	// if track is playing pause it
-	} else if (this.dataset.playing === 'true') {
-		source.stop(0);
-		this.dataset.playing = 'false';
-	}
+	//} else if (this.dataset.playing === 'true') {
+		//source.stop(0);
+		//this.dataset.playing = 'false';
+	/b}
 
-	let state = this.getAttribute('aria-checked') === "true" ? true : false;
-	this.setAttribute( 'aria-checked', state ? "false" : "true" );
+	//let state = this.getAttribute('aria-checked') === "true" ? true : false;
+	//this.setAttribute( 'aria-checked', state ? "false" : "true" );
 
 }, false);
 
