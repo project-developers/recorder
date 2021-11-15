@@ -160,28 +160,31 @@ var source;
 // load some sound
 var audioElement = document.querySelector('video');
 let track;
+var playStat = 0;
 
 const playButton = document.querySelector('.tape-controls-play');
 
 // play pause audio
 playButton.addEventListener('click', function() {
   if(!audioCtx) {
-		init();
+		getData();
 	}
 
 	// check if context is in suspended state (autoplay policy)
 	if (audioCtx.state === 'suspended') {
-		audioCtx.resume();
+		//audioCtx.resume();
 	}
 
-	//if (this.dataset.playing === 'false') {
+	if (playStat === 0) {
 		source.start(0);
+		playStat = 1;
 		//this.dataset.playing = 'true';
 	// if track is playing pause it
-	//} else if (this.dataset.playing === 'true') {
-		//source.stop(0);
+	} else { //if (this.dataset.playing === 'true') {
+		source.stop(0);
+		playStat = 0;
 		//this.dataset.playing = 'false';
-	//}
+	}
 
 	//let state = this.getAttribute('aria-checked') === "true" ? true : false;
 	//this.setAttribute( 'aria-checked', state ? "false" : "true" );
