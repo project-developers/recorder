@@ -130,7 +130,7 @@
 // instigate our audio context
 
   // define variables
-    var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    var audioCtx; // = new (window.AudioContext || window.webkitAudioContext)();
     var source;
 
     
@@ -142,6 +142,7 @@
     // decodeAudioData to decode it and stick it in a buffer.
     // Then we put the buffer into the source
     function getData() {
+	    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
       source = audioCtx.createBufferSource();
 
       return fetch('outfoxing.mp3')
