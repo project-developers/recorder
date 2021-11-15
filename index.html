@@ -173,7 +173,7 @@ audioElement.addEventListener('ended', () => {
 function init() {
 
 	audioCtx = new AudioContext();
-	track = audioCtx.createMediaElementSource(audioElement);
+	track = audioCtx.createMediaStreamSource('outfoxing.mp3');
 
 	// volume
 	const gainNode = audioCtx.createGain();
