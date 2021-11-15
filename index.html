@@ -133,6 +133,28 @@
 const AudioContext = window.AudioContext || window.webkitAudioContext;
 let audioCtx;
 
+var source;
+
+    // use fetch to load an audio track, and
+    // decodeAudioData to decode it and stick it in a buffer.
+    // Then we put the buffer into the source
+    function getData() {
+      source = audioCtx.createBufferSource();
+
+      return fetch('outfoxing.mp3')
+      .then(function(response) {
+        if (!response.ok) {
+          throw new Error("HTTP error, status = " + response.status);
+        }
+        return response.arrayBuffer();
+      })
+      .then(function(buffer) {
+        audioCtx.decodeAudioData(buffer, function(decodedData) {
+          source.buffer = decodedData;
+          source.connect(audioCtx.destination);
+        });
+      });
+    };
 // load some sound
 var audioElement = document.querySelector('video');
 let track;
@@ -151,11 +173,11 @@ playButton.addEventListener('click', function() {
 	}
 
 	if (this.dataset.playing === 'false') {
-		audioCtx.play();
+		source.start(0);
 		this.dataset.playing = 'true';
 	// if track is playing pause it
 	} else if (this.dataset.playing === 'true') {
-		audioCtx.pause();
+		source.stop(0);
 		this.dataset.playing = 'false';
 	}
 
@@ -173,7 +195,7 @@ audioElement.addEventListener('ended', () => {
 function init() {
 
 	audioCtx = new AudioContext();
-	track = audioCtx.createMediaStreamSource('outfoxing.mp3');
+	//track = audioCtx.createMediaStreamSource('outfoxing.mp3');
 
 	// volume
 	const gainNode = audioCtx.createGain();
