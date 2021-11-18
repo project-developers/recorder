@@ -61,7 +61,6 @@ function finalizeClip({clipContainer, blob, id, storage}) {
     storage.delete(parseInt(id));
   };
   clipContainer.querySelector('audio').src = URL.createObjectURL(blob);
-  audioElement.src = URL.createObjectURL(blob);// = clipContainer.querySelector('audio');
   clipContainer.classList.remove('clip-recording');
 }
 
@@ -100,28 +99,13 @@ async function startRecording({storage}) {
 
   // Start recording the microphone's audio stream in-memory.
   const mediaRecorder = new MediaRecorder(stream);
-  console.log(mediaRecorder);
-  /*mediaRecorder.ondataavailable = ({data}) => {
+  mediaRecorder.ondataavailable = ({data}) => {
     chunks.push(data);
-    console.log(chunks);
-  };*/
-  mediaRecorder.ondataavailable = function(e) {
-    chunks.push(e.data);
   };
   mediaRecorder.onstop = async () => {
     outlineIndicator.hide();
     recordButton.onclick = () => startRecording({storage});
-    const blob = chunks[0];//new Blob(chunks);//, {type: 'audio/wav'});//mediaRecorder.mimeType});
-    console.log(chunks);
-    console.log(chunks[0]);
-    var url = URL.createObjectURL(blob);
-    var link = document.createElement('a');
-    var filename = new Date().toISOString();
-    filename = filename.slice(5, -8);
-    link.href = url;
-    link.download = filename + ".wav";
-    link.click();
-    
+    const blob = new Blob(chunks, {type: mediaRecorder.mimeType});
     const id = await storage.save(blob);
     finalizeClip({clipContainer, id, blob, storage});
   };
@@ -170,6 +154,4 @@ function visualizeRecording({stream, outlineIndicator, waveformIndicator}) {
   draw();
 }
 
-function alerter() {
-alert('Hello');
-}
+
