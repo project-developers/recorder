@@ -154,6 +154,7 @@ var source;
         audioCtx.decodeAudioData(buffer, function(decodedData) {
           source.buffer = decodedData;
           source.connect(audioCtx.destination);
+		alert("ready");
         });
       });
     };
