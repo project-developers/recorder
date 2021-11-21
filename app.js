@@ -42,7 +42,7 @@ async function init() {
     finalizeClip({clipContainer, id, blob, storage});
   }
 }
-
+alert("updated");
 /**
  * Inserts a new audio clip at the top of the list.
  *
