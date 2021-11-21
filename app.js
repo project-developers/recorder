@@ -42,7 +42,7 @@ async function init() {
     finalizeClip({clipContainer, id, blob, storage});
   }
 }
-alert("updated");
+//alert("updated");
 /**
  * Inserts a new audio clip at the top of the list.
  *
@@ -105,7 +105,7 @@ async function startRecording({storage}) {
   mediaRecorder.onstop = async () => {
     outlineIndicator.hide();
     recordButton.onclick = () => startRecording({storage});
-    const blob = new Blob(chunks, {type: 'audio/wav'}); //mediaRecorder.mimeType});
+    const blob = new Blob(chunks, {type: mediaRecorder.mimeType});
     const id = await storage.save(blob);
     finalizeClip({clipContainer, id, blob, storage});
   };
