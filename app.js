@@ -158,7 +158,7 @@ function visualizeRecording({stream, outlineIndicator, waveformIndicator}) {
 
   draw();
 }
-/*
+
 async function handleClip(blob) {
 
 const audioContext = new AudioContext()
@@ -187,4 +187,4 @@ fileReader.onloadend = () => {
 fileReader.readAsArrayBuffer(blob)
   
 }
-*/
+
