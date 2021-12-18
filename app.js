@@ -59,11 +59,11 @@ function finalizeClip({clipContainer, blob, id, storage}) {
   clipContainer.querySelector(DELETE_BUTTON_SELECTOR).onclick = () => {
     clipContainer.parentNode.removeChild(clipContainer);
     storage.delete(parseInt(id));
-  };
+  };/*
   clipContainer.querySelector('.play-clip').onclick = () => {
     //const audioCtx = new AudioContext();
     alert("Hello");
-  };
+  };*/
   clipContainer.querySelector('audio').src = URL.createObjectURL(blob);
   clipContainer.classList.remove('clip-recording');
 }
