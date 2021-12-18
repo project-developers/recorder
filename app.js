@@ -161,7 +161,7 @@ function visualizeRecording({stream, outlineIndicator, waveformIndicator}) {
 
 async function handleClip(blob) {
 
-const audioContext = AudioContext()
+const audioContext = new AudioContext()
 const fileReader = new FileReader()
 
 // Set up file reader on loaded end event
