@@ -62,7 +62,7 @@ function finalizeClip({clipContainer, blob, id, storage}) {
   };
   clipContainer.querySelector(.play-clip).onclick = () => {
     const audioCtx = new AudioContext();
-    alert(audioCtx);
+    alert("Hello");
   };
   clipContainer.querySelector('audio').src = URL.createObjectURL(blob);
   clipContainer.classList.remove('clip-recording');
