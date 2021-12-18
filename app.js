@@ -63,6 +63,26 @@ function finalizeClip({clipContainer, blob, id, storage}) {
   clipContainer.getElementsByClassName('play-clip')[0].onclick = () => {
     //const audioCtx = new AudioContext();
     alert("Hello");
+    const audioContext = AudioContext()
+const fileReader = new FileReader()
+
+// Set up file reader on loaded end event
+fileReader.onloadend = () => {
+
+    const arrayBuffer = fileReader.result as ArrayBuffer
+
+    // Convert array buffer into audio buffer
+    audioContext.decodeAudioData(arrayBuffer, (audioBuffer) => {
+
+      // Do something with audioBuffer
+      console.log(audioBuffer)
+
+    })
+
+}
+
+//Load blob
+fileReader.readAsArrayBuffer(blob)
   };
   clipContainer.querySelector('audio').src = URL.createObjectURL(blob);
   clipContainer.classList.remove('clip-recording');
