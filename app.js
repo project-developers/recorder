@@ -60,7 +60,7 @@ function finalizeClip({clipContainer, blob, id, storage}) {
     clipContainer.parentNode.removeChild(clipContainer);
     storage.delete(parseInt(id));
   };
-  clipContainer.querySelector(.play-clip).onclick = () => {
+  clipContainer.querySelector('.play-clip').onclick = () => {
     //const audioCtx = new AudioContext();
     alert("Hello");
   };
