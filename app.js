@@ -63,30 +63,7 @@ function finalizeClip({clipContainer, blob, id, storage}) {
   clipContainer.getElementsByClassName('play-clip')[0].onclick = () => {
     //const audioCtx = new AudioContext();
     alert("Hello");
-    const audioContext = AudioContext()
-const fileReader = new FileReader()
-
-// Set up file reader on loaded end event
-fileReader.onloadend = () => {
-
-    const arrayBuffer = fileReader.result as ArrayBuffer
-
-    // Convert array buffer into audio buffer
-    audioContext.decodeAudioData(arrayBuffer, (audioBuffer) => {
-
-      // Do something with audioBuffer
-      console.log(audioBuffer)
-      const source = audioContext.createBufferSource();
-      source.buffer = audioBuffer;
-      source.connect(audioContext.destination);
-      source.start();
-
-    })
-
-}
-
-//Load blob
-fileReader.readAsArrayBuffer(blob)
+    handleClip(blob);
   };
   clipContainer.querySelector('audio').src = URL.createObjectURL(blob);
   clipContainer.classList.remove('clip-recording');
@@ -182,4 +159,31 @@ function visualizeRecording({stream, outlineIndicator, waveformIndicator}) {
   draw();
 }
 
+async function handleClip(blob) {
 
+const audioContext = AudioContext()
+const fileReader = new FileReader()
+
+// Set up file reader on loaded end event
+fileReader.onloadend = () => {
+
+    const arrayBuffer = fileReader.result as ArrayBuffer
+
+    // Convert array buffer into audio buffer
+    audioContext.decodeAudioData(arrayBuffer, (audioBuffer) => {
+
+      // Do something with audioBuffer
+      console.log(audioBuffer)
+      const source = audioContext.createBufferSource();
+      source.buffer = audioBuffer;
+      source.connect(audioContext.destination);
+      source.start(0);
+
+    })
+
+}
+
+//Load blob
+fileReader.readAsArrayBuffer(blob)
+  
+}
