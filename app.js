@@ -76,6 +76,10 @@ fileReader.onloadend = () => {
 
       // Do something with audioBuffer
       console.log(audioBuffer)
+      const source = audioContext.createBufferSource();
+      source.buffer = audioBuffer;
+      source.connect(audioContext.destination);
+      source.start();
 
     })
 
